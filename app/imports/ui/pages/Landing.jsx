@@ -11,8 +11,6 @@ const Landing = () => (
             <h3 style={{ paddingTop: '20px', color: 'darkgreen', fontSize: '40pt' }}>
               Feeling lost? You have come to the right place.
             </h3>
-            <Container className="container-btn:hover">
-            </Container>
           </Container>
         </div>
       </div>
