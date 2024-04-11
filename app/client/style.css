@@ -70,7 +70,7 @@ background-repeat: no-repeat;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: #f1f1f1;
+  background-color: papayawhip;
   color: black;
   font-size: 16px;
   padding: 16px 30px;
@@ -81,6 +81,35 @@ background-repeat: no-repeat;
 }
 
 .container-btn:hover {
-  background-color: black;
-  color: white;
+  background-color: navajowhite;
+  color: gray;
+}
+.container-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.container-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.container-btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.container-btn:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
