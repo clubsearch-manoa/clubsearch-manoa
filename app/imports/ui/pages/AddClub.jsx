@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { AutoForm, TextField, LongTextField, SubmitField, ErrorsField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -21,7 +21,7 @@ import { ComponentIDs, PageIDs } from '../utilities/ids';
 const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
   name: String,
   description: String,
-  homepage: String,
+  social: String,
   picture: String,
   interests: { type: Array, label: 'Interests', optional: false },
   'interests.$': { type: String, allowedValues: allInterests },
@@ -30,7 +30,7 @@ const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
 });
 
 /* Renders the Page for adding a project. */
-const AddProject = () => {
+const AddClub = () => {
 
   /* On submit, insert the data. */
   const submit = (data, formRef) => {
@@ -73,21 +73,34 @@ const AddProject = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormName} name="name" showInlineError placeholder="Please provide a name" /></Col>
-                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormPicture} name="picture" showInlineError placeholder="Upload a picture url" /></Col>
-                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormHomePage} name="homepage" showInlineError placeholder="Provide a homepage url" /></Col>
+                  <Col xs={6}><TextField id={ComponentIDs.addProjectFormName} name="name" showInlineError placeholder="Club Name" /></Col>
+                  <Col xs={6}><TextField id={ComponentIDs.addProjectFormPicture} name="picture" showInlineError placeholder="Upload a Club Logo/Photo" /></Col>
                 </Row>
                 <LongTextField id={ComponentIDs.addProjectFormDescription} name="description" placeholder="Describe the club here!" />
-                <Row>
+                <Row className="p-1">
                   <Col xs={6} id={ComponentIDs.addProjectFormInterests}>
-                    <SelectField name="interests" showInlineError placeholder="Interests" multiple checkboxes transform={transform} />
+                      <p>Type</p>
+                      <form action="/action_page.php">
+                        <input type="checkbox" id="religion" name="religion" value="Religion"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="religion"> Religion</label><br/>
+                        <input type="checkbox" id="compsci" name="compsci" value="CompSci"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="compsci"> Computer Science</label><br/>
+                        <input type="checkbox" id="engineer" name="engineer" value="Engineer"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="engineer"> Engineering</label><br/>
+                        <input type="checkbox" id="business" name="business" value="Business"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="business"> Business</label><br/>
+                        <input type="checkbox" id="martialarts" name="martialarts" value="MartialArts"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="vehicle2"> Martial Arts</label><br/>
+                        <input type="checkbox" id="sports" name="sports" value="Sports"/>
+                        <label style={{ paddingLeft: '5px' }} htmlFor="sports"> Sports</label><br/>
+                      </form>
                   </Col>
                   <Col xs={6} id={ComponentIDs.addProjectFormParticipants}>
-                    <SelectField name="participants" showInlineError placeholder="Participants" multiple checkboxes transform={transform} />
+                    <Col xs={10}><TextField id={ComponentIDs.addProjectFormSocial} name="social" showInlineError placeholder="Provide a way to contact!"/></Col>
                   </Col>
                 </Row>
-                <SubmitField id={ComponentIDs.addProjectFormSubmit} value="Submit" />
-                <ErrorsField />
+                <SubmitField id={ComponentIDs.addProjectFormSubmit} value="Submit"/>
+                <ErrorsField/>
               </Card.Body>
             </Card>
           </AutoForm>
@@ -97,4 +110,4 @@ const AddProject = () => {
   ) : <LoadingSpinner />;
 };
 
-export default AddProject;
+export default AddClub;
