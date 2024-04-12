@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Image, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
@@ -38,11 +38,12 @@ const SignUp = () => {
     return (<Navigate to="/home" />);
   }
   return (
-    <Container id={PageIDs.signUpPage}>
+    <Container id={PageIDs.signUpPage} className="signup-background">
+      <Image src="https://manoa.hawaii.edu/news/attachments/img10896_10743l.jpg" alt="manoa-rainbow pic" className="signin-background" />
       <Row className="justify-content-center">
         <Col xs={9}>
-          <Col className="text-center">
-            <h2>Register your account</h2>
+          <Col className="text-center" style={{ color: 'white' }}>
+            <h2 style={{ paddingTop: '80px' }}>Register your Clubsearch account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>

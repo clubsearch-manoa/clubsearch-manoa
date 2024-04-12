@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row, Image } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
-/*
- * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
- * Authentication errors modify the component’s state to be displayed
- */
 const SignIn = () => {
   const [error, setError] = useState('');
   const [redirect, setRedirect] = useState(false);
@@ -20,9 +16,7 @@ const SignIn = () => {
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
-  // Handle Signin submission using Meteor's account mechanism.
   const submit = (doc) => {
-    // console.log('submit', doc, redirect);
     const { email, password } = doc;
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
@@ -31,41 +25,35 @@ const SignIn = () => {
         setRedirect(true);
       }
     });
-    // console.log('submit2', email, password, error, redirect);
   };
 
-  // Render the signin form.
-  // console.log('render', error, redirect);
-  // if correct authentication, redirect to page instead of login screen
   if (redirect) {
     return (<Navigate to="/home" />);
   }
-  // Otherwise return the Login form.
   return (
     <Container id={PageIDs.signInPage}>
+      <Image src="https://manoa.hawaii.edu/news/attachments/img10896_10743l.jpg" alt="manoa-rainbow pic" className="signin-background" />
       <Row className="justify-content-center">
         <Col xs={9}>
-          <Col className="text-center">
-            <h2>Login to your account</h2>
+          <Col className="text-center mt-5">
+            <h2 style={{ fontSize: '30px', color: 'white' }}> Login To ClubSearch </h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
-                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
+                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" inputClassName="w-100" />
+                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" inputClassName="w-100" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
-            <Link to="/signup">Click here to Register</Link>
-          </Alert>
+
           {error === '' ? (
             ''
           ) : (
             <Alert variant="danger">
-              <Alert.Heading>Login was not successful</Alert.Heading>
+              <Alert.Heading>Login was not successful. Please try again...</Alert.Heading>
               {error}
             </Alert>
           )}
