@@ -7,6 +7,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /* eslint-disable no-console */
 
@@ -54,6 +55,21 @@ if (Meteor.users.find().count() === 0) {
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default projects');
     Meteor.settings.defaultProjects.map(project => addProject(project));
+  } else {
+    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
+}
+
+const addClub = club => {
+  console.log(`  Adding Club: ${club.name}`);
+  Clubs.collection.insert(club);
+};
+
+// Insert default clubs if clubs collection is empty
+if (!Clubs.collection.find().count()) {
+  if (Meteor.settings.defaultClubs) {
+    console.log('Creating the default clubs');
+    Meteor.settings.defaultClubs.map(club => addClub(club));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }

@@ -16,7 +16,7 @@ class ClubsCollection {
       tags: Array,
       'tags.$': {
         type: String,
-        allowedValues: ['Religion', 'Honor Society', 'Martial Arts', 'Ethnic', 'Other'],
+        allowedValues: ['Religion', 'Honor Society', 'Martial Arts', 'Ethnic', 'Food', 'Other'],
       },
     }.isRequired);
 
