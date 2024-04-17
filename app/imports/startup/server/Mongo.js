@@ -17,6 +17,10 @@ function createUser(email, role) {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
   }
+  if (role === 'club admin') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'club admin');
+  }
 }
 
 /** Define an interest.  Has no effect if interest already exists. */

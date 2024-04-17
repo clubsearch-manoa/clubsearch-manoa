@@ -130,5 +130,17 @@
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],
+  "defaultAccounts": [
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    },
+    {
+      "email": "club@foo.com",
+      "password": "changeclub",
+      "role": "club admin"
+    }
+  ],
   "loadAssetsFile":  false
 }
