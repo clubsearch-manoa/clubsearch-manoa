@@ -130,5 +130,31 @@
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],
+  "defaultClubs": [
+    {
+      "name": "Society of The Enlightened",
+      "image": "https://media.istockphoto.com/id/1386148821/video/silhouette-of-a-meditation-person-calming-himself-on-the-top-of-a-mountain.jpg?s=640x640&k=20&c=1uHL-VGqyUTaPkDs6Lnb0WcuTHqFArY_NpVnsapVcDY=",
+      "description": "A club for those who seek to enlighten themselves and others. DEFAULT CLUB 1",
+      "meetingTimes": "Mondays: 3 PM - 5 PM",
+      "contact": "8Fold@yahoo.com",
+      "tags": ["Religion"]
+    },
+    {
+      "name": "Martial Acolytes",
+      "image": "https://t4.ftcdn.net/jpg/00/63/92/39/360_F_63923978_s2mPCruPpYawQfHHr1B4nB2sIAFackIK.jpg",
+      "description": "A club for those who dedicate themselves to the pursuit of greater martial prowess. DEFAULT CLUB 2",
+      "meetingTimes": "Tuesdays: 2 PM - 3:30 PM",
+      "contact": "kumit3Luvr@gmail.com",
+      "tags": ["Martial Arts"]
+    },
+    {
+      "name": "Culinary Warriors",
+      "image": "https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg",
+      "description": "A club for those who appreciate the culinary arts. DEFAULT CLUB 3",
+      "meetingTimes": "Fridays: 6 PM - 7 PM",
+      "contact": "hannistan@gmail.com",
+      "tags": ["Ethnic", "Food"]
+    }
+  ],
   "loadAssetsFile":  false
 }
