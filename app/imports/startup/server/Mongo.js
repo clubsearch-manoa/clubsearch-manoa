@@ -61,7 +61,7 @@ if (Meteor.users.find().count() === 0) {
 }
 
 const addClub = club => {
-  console.log(`  Adding Club: ${club.name}`);
+  console.log(`Defining club ${club.name}`);
   Clubs.collection.insert(club);
 };
 
