@@ -7,6 +7,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /* eslint-disable no-console */
 
@@ -36,6 +37,21 @@ function addProfile({ firstName, lastName, bio, title, interests, projects, pict
   projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
   // Make sure interests are defined in the Interests collection if they weren't already.
   interests.map(interest => addInterest(interest));
+}
+
+const addClub = club => {
+  console.log(`Defining club ${club.name}`);
+  Clubs.collection.insert(club);
+};
+
+// Insert default clubs if clubs collection is empty
+if (!Clubs.collection.find().count()) {
+  if (Meteor.settings.defaultClubs) {
+    console.log('Creating the default clubs');
+    Meteor.settings.defaultClubs.map(club => addClub(club));
+  } else {
+    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
 }
 
 /** Define a new project. Error if project already exists.  */

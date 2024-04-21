@@ -31,6 +31,7 @@ const NavBar = () => {
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Interests</Nav.Link>
             {currentUser ? (
               [<Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addProject" key="addP">Add Project</Nav.Link>,
+                <Nav.Link as={NavLink} id={ComponentIDs.editClubMenuItem} to="/editclub" key="editC">Edit Club</Nav.Link>,
                 <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>]
             ) : ''}
           </Nav>
