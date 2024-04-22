@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { Roles } from 'meteor/alanning:roles';
-import { ComponentIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -25,16 +25,12 @@ const NavBar = () => {
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
             {currentUser ? (
-              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Home</Nav.Link>
-            ) : ''},
-            {Roles.userIsInRole(Meteor.userId(), 'admin')} ? ([
-            <Nav.Link id="add-club-nav" as={NavLink} to="/addclub"> Add Club </Nav.Link>,
-            <Nav.Link id="browse-club-nav" as={NavLink} to="/list"> Browse Club </Nav.Link>,
-            ])
-            {Roles.userIsInRole(Meteor.userId(), 'clubadmin')} ? ([
-            <Nav.Link id="edit-club-nav" as={NavLink} to="/addclub"> Edit Club </Nav.Link>,
-            <Nav.Link id="browse-club-nav" as={NavLink} to="/list"> Browse Club </Nav.Link>,
-            ])
+              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home" index> Home </Nav.Link>
+            ) : ''}
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
+              <Nav.Link id={PageIDs.addClub} as={NavLink} to="/addproject"> Add Club </Nav.Link>,
+              <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/list"> Browse Club </Nav.Link>,
+            ]) : ''};
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
