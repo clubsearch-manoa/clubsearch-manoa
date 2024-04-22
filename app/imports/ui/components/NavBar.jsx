@@ -31,6 +31,10 @@ const NavBar = () => {
             <Nav.Link id="add-club-nav" as={NavLink} to="/addclub"> Add Club </Nav.Link>,
             <Nav.Link id="browse-club-nav" as={NavLink} to="/list"> Browse Club </Nav.Link>,
             ])
+            {Roles.userIsInRole(Meteor.userId(), 'clubadmin')} ? ([
+            <Nav.Link id="edit-club-nav" as={NavLink} to="/addclub"> Edit Club </Nav.Link>,
+            <Nav.Link id="browse-club-nav" as={NavLink} to="/list"> Browse Club </Nav.Link>,
+            ])
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
