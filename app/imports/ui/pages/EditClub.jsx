@@ -14,22 +14,10 @@ import { pageStyle } from './pageStyles';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = () => new SimpleSchema({
-  //  _id: String,
-  name: { type: String, unique: true },
-  image: { type: String, unique: true },
-  description: { type: String, unique: true },
-  meetingTimes: String,
-  contact: { type: String, unique: true },
-  tags: Array,
-  'tags.$': {
-    type: String,
-    allowedValues: ['Religion', 'Honor Society', 'Martial Arts', 'Ethnic', 'Other'],
-  },
-}.isRequired);
+const bridge = new SimpleSchema2Bridge(Clubs.schema);
 
 /* Renders the Edit CLub Page: what appears when the Club Admin wants to edit a Club. */
-const Home = () => {
+const EditClub = () => {
 
   /* On submit, insert the data. */
   const submit = (data) => {
@@ -46,17 +34,17 @@ const Home = () => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Clubs.userPublications);
     const sub2 = Meteor.subscribe(Clubs.adminPublications);
+    console.log(sub1.ready(), sub2.ready());
     return {
       ready: sub1.ready() && sub2.ready(),
       name: Meteor.user()?.username,
     };
   }, []);
   // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
-  const formSchema = makeSchema();
-  const bridge = new SimpleSchema2Bridge(formSchema);
   // Now create the model with all the user information.
   const club = Clubs.collection.findOne({ name });
   const model = _.extend({}, club);
+  const transform = (label) => ` ${label}`;
   return ready ? (
     <Container id={PageIDs.editPage} className="justify-content-center" style={pageStyle}>
       <Col>
@@ -65,17 +53,20 @@ const Home = () => {
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.editFormName} name="Club Name" showInlineError placeholder="Club Name" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editFormName} name="name" showInlineError placeholder="Club Name" /></Col>
               </Row>
-              <LongTextField id={ComponentIDs.editFormBio} name="description" placeholder="Write a little bit about your club." />
-              <LongTextField id={ComponentIDs.homeFormBio} name="bio" placeholder="Write a little bit about yourself." />
               <Row>
-                <Col xs={6}><TextField name="title" showInlineError placeholder="Title" /></Col>
                 <Col xs={6}><TextField name="image" showInlineError placeholder="URL to picture" /></Col>
               </Row>
+              <LongTextField id={ComponentIDs.editFormDescription} name="description" placeholder="Write a little bit about your club." />
               <Row>
-                <Col xs={6}><SelectField name="interests" showInlineError multiple /></Col>
-                <Col xs={6}><SelectField name="projects" showInlineError multiple /></Col>
+                <Col xs={4}><TextField name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
+              </Row>
+              <Row>
+                <Col xs={4}><TextField name="contact" showInlineError placeholder="Contact" /></Col>
+              </Row>
+              <Row>
+                <SelectField name="tags" multiple checkboxes transform={transform} />
               </Row>
               <SubmitField id={ComponentIDs.editFormSubmit} value="Update" />
             </Card.Body>
@@ -86,4 +77,4 @@ const Home = () => {
   ) : <LoadingSpinner />;
 };
 
-export default Home;
+export default EditClub;
