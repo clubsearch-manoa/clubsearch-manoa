@@ -8,6 +8,7 @@ export const ComponentIDs = {
   addProjectFormParticipants: 'addProjectFormParticipants',
   addProjectFormSubmit: 'addProjectFormSubmit',
   basicNavbarNav: 'basicNavbarNav',
+  browseClubsMenuItem: 'browseClubsMenuItem',
   currentUserDropdown: 'currentUserDropdown',
   currentUserDropdownSignOut: 'currentUserDropdownSignOut',
   filterFormInterests: 'filterFormInterests',
@@ -34,6 +35,7 @@ export const ComponentIDs = {
 
 export const PageIDs = {
   addProjectPage: 'addProjectPage',
+  browseClubsPage: 'browseClubsPage',
   filterPage: 'filterPage',
   homePage: 'homePage',
   interestsPage: 'interestsPage',
