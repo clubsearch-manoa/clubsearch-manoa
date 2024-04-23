@@ -4,6 +4,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -65,4 +66,17 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod };
+const addClubMethod = 'Clubs.add';
+
+Meteor.methods({
+  'Clubs.add'({ name, image, description, meetingTimes, contact, tags }) {
+    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags });
+    if (tags) {
+      tags.map((tag) => Clubs.collection.insert({ club: name, tag }));
+    } else {
+      throw new Meteor.Error('At least one tag is required.');
+    }
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod };
