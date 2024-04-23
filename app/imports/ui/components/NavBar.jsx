@@ -30,14 +30,14 @@ const NavBar = () => {
               <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
               <Nav.Link id={PageIDs.editClub} as={NavLink} to="/editclub" key="editclub">Edit Club</Nav.Link>,
             ]) : ''}
-            {/*{currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([*/}
-            {/*  <Nav.Link id={PageIDs.addClub} as={NavLink} to="/addclub" key="addclub">Add Club</Nav.Link>,*/}
-            {/*  <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,*/}
-            {/*]) : ''}*/}
-            {/*{currentUser && Roles.userIsInRole(Meteor.userId(), 'clubadmin') ? ([*/}
-            {/*  <Nav.Link id={PageIDs.editClub} as={NavLink} to="/editclub" key="editclub">Edit Club</Nav.Link>,*/}
-            {/*  <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,*/}
-            {/*]) : ''}*/}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
+              <Nav.Link id={PageIDs.addClub} as={NavLink} to="/addclub" key="addclub">Add Club</Nav.Link>,
+              <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
+            ]) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'clubadmin') ? ([
+              <Nav.Link id={PageIDs.editClub} as={NavLink} to="/editclub" key="editclub">Edit Club</Nav.Link>,
+              <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
+            ]) : ''}
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
