@@ -26,15 +26,15 @@ const NavBar = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home" index> Home </Nav.Link>,
-              <Nav.Link id={ComponentIDs.browseClubsMenuItem} as={NavLink} to="/browseClubsMenuItem" key="browseClubsMenuItem">Browse Clubs</Nav.Link>,
+              <Nav.Link id={ComponentIDs.browseClubsMenuItem} as={NavLink} to="/browseClubsMenuItem" key="browseClubs">Browse Clubs</Nav.Link>,
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
               <Nav.Link id={ComponentIDs.addClubs} as={NavLink} to="/addclubs" key="addclubs">Add Clubs</Nav.Link>,
-              <Nav.Link id={ComponentIDs.deleteClubMenuItem} as={NavLink} to="/deleteClubsMenuItem" key="deleteClubsMenuItem">Delete Clubs</Nav.Link>,
+              <Nav.Link id={ComponentIDs.deleteClubMenuItem} as={NavLink} to="/deleteClubsMenuItem" key="deleteClubs">Delete Clubs</Nav.Link>,
 
             ]) : ''}
             {currentUser && Roles.userIsInRole(Meteor.userId(), 'clubAdmin') ? ([
-              <Nav.Link id={ComponentIDs.editClubMenuItem} as={NavLink} to="/editClubMenuItem" key="editClubMenuItem">Edit Club</Nav.Link>,
+              <Nav.Link id={ComponentIDs.editClubMenuItem} as={NavLink} to="/editClubMenuItem" key="editClub">Edit Club</Nav.Link>,
             ]) : ''}
           </Nav>
           <Nav className="justify-content-end">
