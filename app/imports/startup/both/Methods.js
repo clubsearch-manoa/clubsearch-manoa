@@ -4,6 +4,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -65,4 +66,16 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod };
+const deleteClubMethod = 'Clubs.delete';
+
+Meteor.methods({
+  'Club.delete'({ name, image, description, meetingTimes, contact, tags }) {
+    if (Clubs) {
+      Clubs.collection.remove({ name, image, description, meetingTimes, contact, tags });
+    } else {
+      throw new Meteor.Error('That club does not exist');
+    }
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, deleteClubMethod };

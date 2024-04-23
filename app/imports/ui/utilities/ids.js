@@ -10,6 +10,9 @@ export const ComponentIDs = {
   basicNavbarNav: 'basicNavbarNav',
   currentUserDropdown: 'currentUserDropdown',
   currentUserDropdownSignOut: 'currentUserDropdownSignOut',
+  deleteClubName: 'deleteClubName',
+  deleteClubFormSubmit: 'deleteClubFormSubmit',
+  deleteClubMenuItem: 'deleteClubMenuItem',
   filterFormInterests: 'filterFormInterests',
   filterFormSubmit: 'filterFormSubmit',
   filterMenuItem: 'filterMenuItem',
@@ -34,6 +37,7 @@ export const ComponentIDs = {
 
 export const PageIDs = {
   addProjectPage: 'addProjectPage',
+  deleteClubPage: 'deleteClubPage',
   filterPage: 'filterPage',
   homePage: 'homePage',
   interestsPage: 'interestsPage',
