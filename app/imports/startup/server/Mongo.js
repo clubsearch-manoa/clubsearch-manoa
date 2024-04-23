@@ -11,11 +11,16 @@ import { Interests } from '../../api/interests/Interests';
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
+function createUser(email, password, role) {
+  const userID = Accounts.createUser({ username: email, email, password: password, role: role });
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  }
+
+  if (role === 'clubAdmin') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'clubAdmin');
   }
 }
 
@@ -49,6 +54,10 @@ function addProject({ name, homepage, description, interests, picture }) {
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultAccounts) {
+    console.log('Creating default logins for each role');
+    Meteor.settings.defaultAccounts.forEach(({ email, password, role }) => createUser(email, password, role));
+  }
   if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles) {
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
