@@ -26,19 +26,24 @@ Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
 /** Define a publication to publish this collection. */
 Meteor.publish(ProjectsInterests.userPublicationName, () => ProjectsInterests.collection.find());
 
-Meteor.publish(Clubs.userPublications, () => {
+Meteor.publish(Clubs.userPublications, function () {
   if (this.userId) {
-    return Clubs.collection.find();
+    const clubs = Clubs.collection.find();
+    console.log(clubs);
+    return clubs;
   }
   return this.ready();
 });
 
-Meteor.publish(Clubs.adminPublications, () => {
+Meteor.publish(Clubs.adminPublications, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Clubs.collection.find();
+    const clubs = Clubs.collection.find();
+    console.log(clubs);
+    return clubs;
   }
   return this.ready();
 });
+
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
