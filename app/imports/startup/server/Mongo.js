@@ -54,13 +54,13 @@ function addProject({ name, homepage, description, interests, picture }) {
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultAccounts) {
+    console.log('Creating default logins for each role');
+    Meteor.settings.defaultAccounts.forEach(({ email, password, role }) => createUser(email, password, role));
+  }
   if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles) {
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
-    console.log('Creating the default projects');
-    Meteor.settings.defaultProjects.map(project => addProject(project));
-  } else {
-    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
 
