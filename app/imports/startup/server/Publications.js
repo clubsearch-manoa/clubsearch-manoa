@@ -1,10 +1,12 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /** Define a publication to publish all interests. */
 Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
@@ -23,6 +25,24 @@ Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProjectsInterests.userPublicationName, () => ProjectsInterests.collection.find());
+
+Meteor.publish(Clubs.userPublications, function () {
+  if (this.userId) {
+    const clubs = Clubs.collection.find();
+    console.log(clubs);
+    return clubs;
+  }
+  return this.ready();
+});
+
+Meteor.publish(Clubs.adminPublications, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    const clubs = Clubs.collection.find();
+    console.log(clubs);
+    return clubs;
+  }
+  return this.ready();
+});
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
