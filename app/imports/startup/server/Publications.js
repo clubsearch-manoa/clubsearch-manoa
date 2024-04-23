@@ -32,10 +32,15 @@ Meteor.publish(Clubs.userPublications, function () {
 });
 
 Meteor.publish(Clubs.adminPublications, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'clubAdmin')) {
+    return Clubs.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Clubs.adminPublications, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    const clubs = Clubs.collection.find();
-    console.log(clubs);
-    return clubs;
+    return Clubs.collection.find();
   }
   return this.ready();
 });

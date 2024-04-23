@@ -1,5 +1,5 @@
 export const ComponentIDs = {
-  // AddClub
+  // Add Club
   addClubMenuItem: 'addClubMenuItem',
   addClubFormName: 'addClubFormName',
   addClubFormImage: 'addClubFormImage',
@@ -8,7 +8,7 @@ export const ComponentIDs = {
   addClubFormContact: 'addClubFormContact',
   addClubFormTags: 'addClubFormTags',
   addClubFormSubmit: 'addClubFormSubmit',
-  // AddProject (old)
+  // Add Project (old)
   addProjectMenuItem: 'addProjectMenuItem',
   addProjectFormName: 'addProjectFormName',
   addProjectFormPicture: 'addProjectFormPicture',
@@ -19,14 +19,16 @@ export const ComponentIDs = {
   addProjectFormSubmit: 'addProjectFormSubmit',
   // NavBar
   basicNavbarNav: 'basicNavbarNav',
-  // BrowseClubs
+  // Browse Clubs
   browseClubsMenuItem: 'browseClubsMenuItem',
   // Current User Dropdown
   currentUserDropdown: 'currentUserDropdown',
   currentUserDropdownSignOut: 'currentUserDropdownSignOut',
-  // DeleteClub
+  // Delete Club
   deleteClubMenuItem: 'deleteClubMenuItem',
-  // EditClub
+  deleteClubName: 'deleteClubName',
+  deleteClubFormSubmit: 'deleteClubFormSubmit',
+  // Edit Club
   editClubMenuItem: 'editClubMenuItem',
   // Filter Form (old)
   filterFormInterests: 'filterFormInterests',

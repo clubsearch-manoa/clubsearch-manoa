@@ -79,4 +79,16 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addClubMethod };
+const deleteClubMethod = 'Clubs.delete';
+
+Meteor.methods({
+  'Clubs.delete'({ name, image, description, meetingTimes, contact, tags }) {
+    if (Clubs) {
+      Clubs.collection.remove({ name, image, description, meetingTimes, contact, tags });
+    } else {
+      throw new Meteor.Error('That club does not exist');
+    }
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod };

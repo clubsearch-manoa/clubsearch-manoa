@@ -40,10 +40,9 @@ const AddClub = () => {
 
   const { ready, tags } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub1 = Meteor.subscribe(Clubs.userPublications);
-    const sub2 = Meteor.subscribe(Clubs.adminPublications);
+    const subscription = Meteor.subscribe(Clubs.adminPublications);
     return {
-      ready: sub1.ready() && sub2.ready(),
+      ready: subscription.ready(),
       tags: Clubs.collection.find().fetch(),
     };
   }, []);
