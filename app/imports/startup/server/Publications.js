@@ -27,12 +27,8 @@ Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
 Meteor.publish(ProjectsInterests.userPublicationName, () => ProjectsInterests.collection.find());
 
 Meteor.publish(Clubs.userPublications, function () {
-  if (this.userId) {
-    const clubs = Clubs.collection.find();
-    console.log(clubs);
-    return clubs;
-  }
-  return this.ready();
+  return Clubs.collection.find();
+  /* return this.ready(); */
 });
 
 Meteor.publish(Clubs.adminPublications, function () {
