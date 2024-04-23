@@ -91,4 +91,12 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod };
+const editClubMethod = 'Clubs.edit';
+
+Meteor.methods({
+  'Clubs.update'({ name, image, description, meetingTimes, contact, tags }) {
+    Clubs.collection.update({ name }, { $set: { name, image, description, meetingTimes, contact, tags } });
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod };

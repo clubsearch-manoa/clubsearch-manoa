@@ -30,6 +30,9 @@ export const ComponentIDs = {
   deleteClubFormSubmit: 'deleteClubFormSubmit',
   // Edit Club
   editClubMenuItem: 'editClubMenuItem',
+  editFormDescription: 'editFormDescription',
+  editFormName: 'editFormName',
+  editFormSubmit: 'editFormSubmit:',
   // Filter Form (old)
   filterFormInterests: 'filterFormInterests',
   filterFormSubmit: 'filterFormSubmit',
