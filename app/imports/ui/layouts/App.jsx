@@ -15,7 +15,7 @@ import Projects from '../pages/Projects';
 import Interests from '../pages/Interests';
 import Home from '../pages/Home';
 import Filter from '../pages/Filter';
-import AddProject from '../pages/AddProject';
+import AddClub from '../pages/AddClub';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -32,7 +32,7 @@ const App = () => (
         <Route path="/projects" element={<Projects />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
-        <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
+        <Route path="/addclub" element={<ProtectedRoute><AddClub /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

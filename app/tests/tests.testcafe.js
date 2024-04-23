@@ -9,6 +9,7 @@ import { homePage } from './home.page';
 import { addProjectPage } from './addproject.page';
 import { filterPage } from './filter.page';
 import { navBar } from './navbar.component';
+import { addClubPage } from './addclub.page';
 
 /* global fixture:false, test:false */
 
@@ -83,4 +84,13 @@ test('Test that filter page works', async (testController) => {
   await navBar.gotoFilterPage(testController);
   await filterPage.isDisplayed(testController);
   await filterPage.filter(testController);
+});
+
+test('Test that addClub page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signInPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoAddProjectPage(testController);
+  await addClubPage.isDisplayed(testController);
+  await addClubPage.addClub(testController);
 });
