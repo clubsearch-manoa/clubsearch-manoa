@@ -11,14 +11,16 @@ import { Interests } from '../../api/interests/Interests';
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
+function createUser(email, password, role) {
+  const userID = Accounts.createUser({ username: email, email, password: password, role: role });
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
-  } else if (role === 'clubadmin') {
+  }
+
+  if (role === 'clubAdmin') {
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'clubadmin');
+    Roles.addUsersToRoles(userID, 'clubAdmin');
   }
 }
 

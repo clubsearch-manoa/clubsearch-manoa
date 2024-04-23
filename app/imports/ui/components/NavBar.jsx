@@ -24,17 +24,17 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
-            {currentUser ? ([ //This is going to be a default for when the admin and club admin profiles are made, the navlinks work for now in just a current user
+            {currentUser ? ([
+              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home" index> Home </Nav.Link>,
+              <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
+            ]) : ''}
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home" index> Home </Nav.Link>,
               <Nav.Link id={PageIDs.addClub} as={NavLink} to="/addclub" key="addclub">Add Club</Nav.Link>,
               <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
-              <Nav.Link id={PageIDs.editClub} as={NavLink} to="/editclub" key="editclub">Edit Club</Nav.Link>,
             ]) : ''}
-            {currentUser && Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
-              <Nav.Link id={PageIDs.addClub} as={NavLink} to="/addclub" key="addclub">Add Club</Nav.Link>,
-              <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
-            ]) : ''}
-            {currentUser && Roles.userIsInRole(Meteor.userId(), 'clubadmin') ? ([
+            {currentUser && Roles.userIsInRole(Meteor.userId(), 'clubAdmin') ? ([
+              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home" index> Home </Nav.Link>,
               <Nav.Link id={PageIDs.editClub} as={NavLink} to="/editclub" key="editclub">Edit Club</Nav.Link>,
               <Nav.Link id={PageIDs.browseClubs} as={NavLink} to="/browseclubs" key="browseclubs">Browse Clubs</Nav.Link>,
             ]) : ''}

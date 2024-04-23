@@ -1,4 +1,10 @@
 {
+  "defaultAccounts": [
+    { "email": "superadmin@foo.com", "password": "changeme", "role": "admin" },
+    { "email": "clubadmin@foo.com", "password": "changeme", "role": "clubAdmin" },
+    { "email": "johndoe@foo.com", "password": "changeme" }
+  ],
+
   "defaultProfiles": [
     {
       "firstName": "Philip",
