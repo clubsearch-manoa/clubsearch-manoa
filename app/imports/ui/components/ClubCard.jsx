@@ -24,9 +24,11 @@ const ClubCard = ({ club }) => (
           {club.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
         </Card.Text>
         <Card.Text>
+          {club.meetingTimes}
+        </Card.Text>
+        <Card.Text>
           {club.contact}
         </Card.Text>
-
       </Card.Body>
     </Card>
   </Col>
