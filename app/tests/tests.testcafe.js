@@ -9,9 +9,11 @@ import { homePage } from './home.page';
 import { addProjectPage } from './addproject.page';
 import { filterPage } from './filter.page';
 import { navBar } from './navbar.component';
+import { browseClubsPage } from './browseclubs.page';
 import { addClubPage } from './addclub.page';
 import { deleteClubPage } from './deleteclub.page';
 import { editClubPage } from './editclub.page';
+
 
 /* global fixture:false, test:false */
 
@@ -83,4 +85,12 @@ test('Test that editClub page works', async (testController) => {
   await navBar.gotoEditClubPage(testController);
   await editClubPage.isDisplayed(testController);
   await editClubPage.editClub(testController);
+});
+
+test('Test that browse clubs page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signInPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoBrowseClubsPage(testController);
+  await browseClubsPage.isDisplayed(testController);
 });

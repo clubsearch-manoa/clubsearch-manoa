@@ -97,7 +97,7 @@ class NavBar {
     await testController.click(`#${ComponentIDs.loginDropdown}`);
     await testController.click(`#${ComponentIDs.loginDropdownSignUp}`);
   }
-
+  
   async gotoEditClubPage(testController) {
     await this.ensureLogout(testController);
     const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
@@ -106,6 +106,13 @@ class NavBar {
     }
     await testController.click(`#${ComponentIDs.editClubMenuItem}`);
   }
-}
+  
+  async gotoBrowseClubsPage(testController) {
+    const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click(`#${ComponentIDs.browseClubsMenuItem}`);
+  }
 
 export const navBar = new NavBar();
