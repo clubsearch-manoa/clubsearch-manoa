@@ -21,11 +21,13 @@ class ClubsCollection {
         min: 1,
         max: 14,
       },
+      adminEmail: { type: String, required: false, min: 1, max: 100 },
     });
 
     this.collection.attachSchema(this.schema);
     this.userPublications = `${this.name}.publication.user`;
     this.adminPublications = `${this.name}.publication.admin`;
+    this.clubAdminPublications = `${this.name}.publication.clubAdmin`;
   }
 }
 
