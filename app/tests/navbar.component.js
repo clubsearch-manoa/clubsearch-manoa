@@ -86,6 +86,7 @@ class NavBar {
     await testController.click(`#${ComponentIDs.currentUserDropdownSignOut}`);
   }
 
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
@@ -95,6 +96,15 @@ class NavBar {
     }
     await testController.click(`#${ComponentIDs.loginDropdown}`);
     await testController.click(`#${ComponentIDs.loginDropdownSignUp}`);
+  }
+
+  async gotoEditClubPage(testController) {
+    await this.ensureLogout(testController);
+    const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click(`#${ComponentIDs.editClubMenuItem}`);
   }
 }
 

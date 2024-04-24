@@ -1,9 +1,11 @@
+
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -65,4 +67,37 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod };
+const addClubMethod = 'Clubs.add';
+
+Meteor.methods({
+  'Clubs.add'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
+    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags, adminEmail });
+    if (tags) {
+      tags.map((tag) => Clubs.collection.insert({ club: name, tag }));
+    } else {
+      throw new Meteor.Error('At least one tag is required.');
+    }
+  },
+});
+
+const deleteClubMethod = 'Clubs.delete';
+
+Meteor.methods({
+  'Clubs.delete'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
+    if (Clubs) {
+      Clubs.collection.remove({ name, image, description, meetingTimes, contact, tags, adminEmail });
+    } else {
+      throw new Meteor.Error('That club does not exist');
+    }
+  },
+});
+
+const editClubMethod = 'Clubs.edit';
+
+Meteor.methods({
+  'Clubs.edit'({ name, image, description, meetingTimes, contact, tags }) {
+    Clubs.collection.update({ name }, { $set: { name, image, description, meetingTimes, contact, tags } });
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod };
