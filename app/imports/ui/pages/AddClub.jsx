@@ -14,15 +14,7 @@ import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Clubs } from '../../api/clubs/Clubs';
 
 /* Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allTags) => new SimpleSchema({
-  name: String,
-  image: String,
-  description: String,
-  meetingTimes: String,
-  contact: String,
-  tags: { type: Array, label: 'Tags', optional: false },
-  'tags.$': { type: String, allowedValues: allTags },
-});
+const bridge = new SimpleSchema2Bridge(Clubs.schema);
 
 /* Renders the Page for adding a project. */
 const AddClub = () => {
@@ -38,19 +30,13 @@ const AddClub = () => {
     });
   };
 
-  const { ready, tags } = useTracker(() => {
+  const { ready } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const subscription = Meteor.subscribe(Clubs.adminPublications);
     return {
       ready: subscription.ready(),
-      tags: Clubs.collection.find().fetch(),
     };
   }, []);
-
-  let fRef = null;
-  const allTags = _.pluck(tags, 'type');
-  const formSchema = makeSchema(allTags);
-  const bridge = new SimpleSchema2Bridge(formSchema);
   const transform = (label) => ` ${label}`;
   /* Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   return ready ? (
@@ -58,7 +44,7 @@ const AddClub = () => {
       <Row id={PageIDs.addClubPage} className="justify-content-center">
         <Col xs={10}>
           <Col className="text-center"><h2>Add Club</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+          <AutoForm model={{}} schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
                 <Row>
@@ -74,7 +60,12 @@ const AddClub = () => {
                     <Col xs={10}><TextField id={ComponentIDs.addClubFormContact} name="contact" showInlineError placeholder="Provide a way to contact!" /></Col>
                   </Col>
                   <Col xs={6}>
-                    <Col xs={10}><TextField id={ComponentIDs.addClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Provide club meeting times!" /></Col>
+                    <TextField id={ComponentIDs.addClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Provide club meeting times!" />
+                  </Col>
+                  <Col xs={6}>
+                    <Col xs={10}>
+                      <TextField id={ComponentIDs.addClubFormEmail} name="adminEmail" showInlineError placeholder="Add a Club Admin's email..." />
+                    </Col>
                   </Col>
                 </Row>
                 <SubmitField id={ComponentIDs.addClubFormSubmit} value="Submit" />

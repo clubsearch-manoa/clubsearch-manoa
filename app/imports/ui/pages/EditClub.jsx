@@ -29,18 +29,18 @@ const EditClub = () => {
     });
   };
 
-  const { ready, name } = useTracker(() => {
+  const { ready, email } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
     const sub1 = Meteor.subscribe(Clubs.userPublications);
     const sub2 = Meteor.subscribe(Clubs.adminPublications);
     return {
       ready: sub1.ready() && sub2.ready(),
-      name: Meteor.user()?.username,
+      email: Meteor.user()?.username,
     };
   }, []);
   // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   // Now create the model with all the user information.
-  const club = Clubs.collection.findOne({ name });
+  const club = Clubs.collection.findOne({ email });
   const model = _.extend({}, club);
   const transform = (label) => ` ${label}`;
   return ready ? (
