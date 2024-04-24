@@ -32,7 +32,7 @@ const EditClub = () => {
 
   const { ready, model } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const subscription = Meteor.subscribe(Clubs.adminPublications);
+    const subscription = Meteor.subscribe(Clubs.clubAdminPublications);
     const email = Meteor.user()?.username;
     const dataModel = _.extend({}, Clubs.collection.findOne({ adminEmail: email }));
     const rdy = subscription.ready();
