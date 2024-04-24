@@ -66,12 +66,13 @@ class NavBar {
   //   await testController.click(`#${ComponentIDs.filterMenuItem}`);
   // }
 
-  async gotoDeleteClubPage(testController) {
+
+  async gotoAddClubPage(testController) {
     const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click(`#${ComponentIDs.deleteClubMenuItem}`);
+    await testController.click(`#${ComponentIDs.addClubMenuItem}`);
   }
 
   /** Check that the specified user is currently logged in. */
@@ -103,6 +104,14 @@ class NavBar {
     }
     await testController.click(`#${ComponentIDs.loginDropdown}`);
     await testController.click(`#${ComponentIDs.loginDropdownSignUp}`);
+  }
+  
+  async gotoDeleteClubPage(testController) {
+    const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click(`#${ComponentIDs.deleteClubMenuItem}`);
   }
 
   async gotoEditClubPage(testController) {

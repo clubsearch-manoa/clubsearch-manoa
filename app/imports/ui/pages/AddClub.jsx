@@ -52,8 +52,8 @@ const AddClub = () => {
                 </Row>
                 <LongTextField id={ComponentIDs.addClubFormDescription} name="description" placeholder="Describe the club here!" />
                 <Row className="p-1">
-                  <Col xs={6}>
-                    <SelectField id={ComponentIDs.addClubFormTags} name="tags" showInlineError placeholder="Tags" multiple checkboxes transform={transform} />
+                  <Col xs={6} id={ComponentIDs.addClubFormTags}>
+                    <SelectField name="tags" showInlineError placeholder="Tags" multiple checkboxes transform={transform} />
                   </Col>
                   <Col xs={6}>
                     <Col xs={10}><TextField id={ComponentIDs.addClubFormContact} name="contact" showInlineError placeholder="Provide a way to contact!" /></Col>

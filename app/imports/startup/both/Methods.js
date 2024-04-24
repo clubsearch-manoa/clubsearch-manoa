@@ -1,4 +1,3 @@
-
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -70,8 +69,8 @@ Meteor.methods({
 const addClubMethod = 'Clubs.add';
 
 Meteor.methods({
-  'Clubs.add'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
-    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags, adminEmail });
+  'Clubs.add'({ name, image, description, meetingTimes, contact, tags }) {
+    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags });
   },
 });
 
