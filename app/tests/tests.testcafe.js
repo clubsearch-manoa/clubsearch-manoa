@@ -10,6 +10,7 @@ import { addProjectPage } from './addproject.page';
 import { filterPage } from './filter.page';
 import { navBar } from './navbar.component';
 import { addClubPage } from './addclub.page';
+import { deleteClubPage } from './deleteclub.page';
 
 /* global fixture:false, test:false */
 
@@ -93,4 +94,13 @@ test('Test that addClub page works', async (testController) => {
   await navBar.gotoAddProjectPage(testController);
   await addClubPage.isDisplayed(testController);
   await addClubPage.addClub(testController);
+});
+
+test('Test that deleteClub page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSignInPage(testController);
+  await signInPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoAddProjectPage(testController);
+  await deleteClubPage.isDisplayed(testController);
+  await deleteClubPage.deleteClub(testController);
 });
