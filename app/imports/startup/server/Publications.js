@@ -31,7 +31,7 @@ Meteor.publish(Clubs.userPublications, function () {
   /* return this.ready(); */
 });
 
-Meteor.publish(Clubs.adminPublications, function () {
+Meteor.publish(Clubs.clubAdminPublications, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'clubAdmin')) {
     return Clubs.collection.find();
   }
