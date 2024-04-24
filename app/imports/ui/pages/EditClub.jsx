@@ -19,35 +19,38 @@ const bridge = new SimpleSchema2Bridge(Clubs.schema);
 const EditClub = () => {
 
   /* On submit, insert the data. */
-  const submit = (data) => {
+  const submit = (data, formRef) => {
     Meteor.call(editClubMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
         swal('Success', 'Club information updated successfully', 'success');
+        formRef.reset();
       }
     });
   };
 
-  const { ready, name } = useTracker(() => {
+  const { ready, model } = useTracker(() => {
     // Ensure that minimongo is populated with all collections prior to running render().
-    const sub1 = Meteor.subscribe(Clubs.userPublications);
-    const sub2 = Meteor.subscribe(Clubs.adminPublications);
+    const subscription = Meteor.subscribe(Clubs.adminPublications);
+    const email = Meteor.user()?.username;
+    const dataModel = _.extend({}, Clubs.collection.findOne({ adminEmail: email }));
+    const rdy = subscription.ready();
+    console.log(rdy);
     return {
-      ready: sub1.ready() && sub2.ready(),
-      name: Meteor.user()?.username,
+      ready: rdy,
+      model: dataModel,
     };
   }, []);
   // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
   // Now create the model with all the user information.
-  const club = Clubs.collection.findOne({ name });
-  const model = _.extend({}, club);
+  let fRef = null;
   const transform = (label) => ` ${label}`;
   return ready ? (
     <Container id={PageIDs.editClubPage} className="justify-content-center" style={pageStyle}>
       <Col>
         <Col className="justify-content-center text-center"><h2>Edit Club</h2></Col>
-        <AutoForm model={model} schema={bridge} onSubmit={data => submit(data)}>
+        <AutoForm ref={ref => { fRef = ref; }} model={model} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Card>
             <Card.Body>
               <Row>

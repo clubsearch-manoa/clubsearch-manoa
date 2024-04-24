@@ -13,21 +13,21 @@ const ClubCard = ({ club }) => (
   <Col>
     <Card className="h-100">
       <Card.Header>
-        <Image src={club.image} width={50} />
-        <Card.Title>{club.name}</Card.Title>
+        <Image src={club.image} width={100} height={100} />
+        <Card.Title><b>{club.name}</b></Card.Title>
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          {club.description}
+          <b>Description:</b> {club.description}
         </Card.Text>
         <Card.Text>
           {club.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
         </Card.Text>
         <Card.Text>
-          {club.meetingTimes}
+          <b>Meeting Times:</b> {club.meetingTimes}
         </Card.Text>
         <Card.Text>
-          {club.contact}
+          <b>Contact Info:</b> {club.contact}
         </Card.Text>
       </Card.Body>
     </Card>

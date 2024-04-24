@@ -86,6 +86,7 @@ class NavBar {
     await testController.click(`#${ComponentIDs.currentUserDropdownSignOut}`);
   }
 
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
