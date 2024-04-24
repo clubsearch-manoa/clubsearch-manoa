@@ -61,7 +61,7 @@ test('Test that addClub page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signInPage.signin(testController, superAdminCredentials.username, superAdminCredentials.password);
   // await navBar.gotoAddClubPage(testController);
-  await navBar.gotoAddProjectPage(testController);
+  await navBar.gotoAddClubPage(testController);
   await addClubPage.isDisplayed(testController);
   await addClubPage.addClub(testController);
 });

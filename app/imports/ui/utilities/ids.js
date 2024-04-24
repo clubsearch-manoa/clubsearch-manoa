@@ -7,6 +7,7 @@ export const ComponentIDs = {
   addClubFormMeetingTimes: 'addClubFormMeetingTimes',
   addClubFormContact: 'addClubFormContact',
   addClubFormTags: 'addClubFormTags',
+  addClubFormEmail: 'addClubFormEmail',
   addClubFormSubmit: 'addClubFormSubmit',
   // Add Project (old)
   addProjectMenuItem: 'addProjectMenuItem',

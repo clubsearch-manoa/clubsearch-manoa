@@ -58,6 +58,14 @@ class NavBar {
     await testController.click(`#${ComponentIDs.addProjectMenuItem}`);
   }
 
+  async gotoAddClubPage(testController) {
+    const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.click(`#${ComponentIDs.addClubMenuItem}`);
+  }
+
   async gotoFilterPage(testController) {
     const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
     if (!visible) {

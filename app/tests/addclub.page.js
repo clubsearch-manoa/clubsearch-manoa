@@ -26,7 +26,7 @@ class AddClubPage {
     await testController.typeText(`#${ComponentIDs.addClubFormImage}`, image);
     await testController.typeText(`#${ComponentIDs.addClubFormDescription}`, description);
     await testController.typeText(`#${ComponentIDs.addClubFormMeetingTimes}`, meetingTimes);
-    await testController.typeText(`#${ComponentIDs.addClubFormContact}`, contact)
+    await testController.typeText(`#${ComponentIDs.addClubFormContact}`, contact);
     await testController.typeText(`#${ComponentIDs.addClubFormEmail}`, adminEmail);
 
     // Select two interests.
