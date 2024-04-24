@@ -51,22 +51,22 @@ const EditClub = () => {
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.editFormName} name="name" showInlineError placeholder="Club Name" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormName} name="name" showInlineError placeholder="Club Name" /></Col>
               </Row>
               <Row>
-                <Col xs={6}><TextField name="image" showInlineError placeholder="URL to picture" /></Col>
+                <Col xs={6}><TextField id={ComponentIDs.editClubFormImage} name="image" showInlineError placeholder="URL to picture" /></Col>
               </Row>
-              <LongTextField id={ComponentIDs.editFormDescription} name="description" placeholder="Write a little bit about your club." />
+              <LongTextField id={ComponentIDs.editClubFormDescription} name="description" placeholder="Write a little bit about your club." />
               <Row>
-                <Col xs={4}><TextField name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
               </Row>
               <Row>
-                <Col xs={4}><TextField name="contact" showInlineError placeholder="Contact" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormContact} name="contact" showInlineError placeholder="Contact" /></Col>
               </Row>
               <Row>
                 <SelectField name="tags" multiple checkboxes transform={transform} />
               </Row>
-              <SubmitField id={ComponentIDs.editFormSubmit} value="Update" />
+              <SubmitField id={ComponentIDs.editClubFormSubmit} value="Update" />
             </Card.Body>
           </Card>
         </AutoForm>
