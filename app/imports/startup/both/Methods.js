@@ -69,8 +69,8 @@ Meteor.methods({
 const addClubMethod = 'Clubs.add';
 
 Meteor.methods({
-  'Clubs.add'({ name, image, description, meetingTimes, contact, tags }) {
-    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags });
+  'Clubs.add'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
+    Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags, adminEmail });
     if (tags) {
       tags.map((tag) => Clubs.collection.insert({ club: name, tag }));
     } else {
@@ -82,9 +82,9 @@ Meteor.methods({
 const deleteClubMethod = 'Clubs.delete';
 
 Meteor.methods({
-  'Clubs.delete'({ name, image, description, meetingTimes, contact, tags }) {
+  'Clubs.delete'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
     if (Clubs) {
-      Clubs.collection.remove({ name, image, description, meetingTimes, contact, tags });
+      Clubs.collection.remove({ name, image, description, meetingTimes, contact, tags, adminEmail });
     } else {
       throw new Meteor.Error('That club does not exist');
     }
@@ -94,7 +94,7 @@ Meteor.methods({
 const editClubMethod = 'Clubs.edit';
 
 Meteor.methods({
-  'Clubs.update'({ name, image, description, meetingTimes, contact, tags }) {
+  'Clubs.edit'({ name, image, description, meetingTimes, contact, tags }) {
     Clubs.collection.update({ name }, { $set: { name, image, description, meetingTimes, contact, tags } });
   },
 });
