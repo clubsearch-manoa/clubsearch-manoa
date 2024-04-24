@@ -13,7 +13,7 @@ const ClubCard = ({ club }) => (
   <Col>
     <Card className="h-100">
       <Card.Header>
-        <Image src={club.image} width={100} height={100}/>
+        <Image src={club.image} width={100} height={100} />
         <Card.Title><b>{club.name}</b></Card.Title>
       </Card.Header>
       <Card.Body>
