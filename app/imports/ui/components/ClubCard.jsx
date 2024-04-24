@@ -18,16 +18,16 @@ const ClubCard = ({ club }) => (
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          {club.description}
+          Description: {club.description}
         </Card.Text>
         <Card.Text>
           {club.tags.map((tag, index) => <Badge key={index} bg="info">{tag}</Badge>)}
         </Card.Text>
         <Card.Text>
-          {club.meetingTimes}
+          Meeting Times: {club.meetingTimes}
         </Card.Text>
         <Card.Text>
-          {club.contact}
+          Contact Info: {club.contact}
         </Card.Text>
       </Card.Body>
     </Card>
