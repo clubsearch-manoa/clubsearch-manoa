@@ -91,7 +91,7 @@ test('Test that addClub page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signInPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoAddProjectPage(testController);
+  await navBar.gotoAddClubPage(testController);
   await addClubPage.isDisplayed(testController);
   await addClubPage.addClub(testController);
 });
@@ -100,7 +100,7 @@ test('Test that deleteClub page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signInPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoAddProjectPage(testController);
+  await navBar.gotoDeleteClubPage(testController);
   await deleteClubPage.isDisplayed(testController);
   await deleteClubPage.deleteClub(testController);
 });
