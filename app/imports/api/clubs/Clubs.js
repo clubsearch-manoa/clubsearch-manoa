@@ -9,9 +9,9 @@ class ClubsCollection {
     this.collection = new Mongo.Collection(this.name);
     this.schema = new SimpleSchema({
     //  _id: String,
-      name: { type: String, unique: true, required: true, min: 1, max: 100 },
-      image: { type: String, unique: true, required: true, min: 1, max: 255 },
-      description: { type: String, unique: true, required: true, min: 1, max: 500 },
+      name: { type: String, unique: 'true', required: true, min: 1, max: 100 },
+      image: { type: String, unique: 'true', required: true, min: 1, max: 255 },
+      description: { type: String, unique: 'true', required: true, min: 1, max: 500 },
       meetingTimes: { type: String, required: true, min: 1, max: 24 },
       contact: { type: String, required: true, min: 1, max: 100 },
       tags: { type: Array, required: true, min: 1, max: 6 },
@@ -21,7 +21,7 @@ class ClubsCollection {
         min: 1,
         max: 14,
       },
-      adminEmail: { type: String, required: false, min: 1, max: 100 },
+      adminEmail: { type: String, unique: 'true', required: false, min: 1, max: 100 },
     });
 
     this.collection.attachSchema(this.schema);
