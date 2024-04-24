@@ -7,15 +7,21 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
+import { Clubs } from '../../api/clubs/Clubs';
 
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
+function createUser(email, password, role) {
+  const userID = Accounts.createUser({ username: email, email, password: password, role: role });
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  }
+
+  if (role === 'clubAdmin') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'clubAdmin');
   }
 }
 
@@ -49,11 +55,30 @@ function addProject({ name, homepage, description, interests, picture }) {
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultAccounts) {
+    console.log('Creating default logins for each role');
+    Meteor.settings.defaultAccounts.forEach(({ email, password, role }) => createUser(email, password, role));
+  }
   if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles) {
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default projects');
     Meteor.settings.defaultProjects.map(project => addProject(project));
+  } else {
+    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
+}
+
+const addClub = club => {
+  console.log(`Defining club ${club.name}`);
+  Clubs.collection.insert(club);
+};
+
+// Insert default clubs if clubs collection is empty
+if (!Clubs.collection.find().count()) {
+  if (Meteor.settings.defaultClubs) {
+    console.log('Creating the default clubs');
+    Meteor.settings.defaultClubs.map(club => addClub(club));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
