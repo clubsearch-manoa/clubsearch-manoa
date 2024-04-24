@@ -19,13 +19,15 @@ class AddClubPage {
     const description = 'Growing awesome computer scientists, one graduate at a time.';
     const meetingTimes = 'Tuesdays: 2 PM - 3:30 PM';
     const contact = 'kumit3Luvr@gmail.com';
+    const adminEmail = 'superadmin@foo.com';
     await this.isDisplayed(testController);
     // Define the new project
     await testController.typeText(`#${ComponentIDs.addClubFormName}`, name);
     await testController.typeText(`#${ComponentIDs.addClubFormImage}`, image);
     await testController.typeText(`#${ComponentIDs.addClubFormDescription}`, description);
     await testController.typeText(`#${ComponentIDs.addClubFormMeetingTimes}`, meetingTimes);
-    await testController.typeText(`#${ComponentIDs.addClubFormContact}`, contact);
+    await testController.typeText(`#${ComponentIDs.addClubFormContact}`, contact)
+    await testController.typeText(`#${ComponentIDs.addClubFormEmail}`, adminEmail);
 
     // Select two interests.
     const tagsSelector = Selector(`#${ComponentIDs.addClubFormTags} div.form-check input`);
