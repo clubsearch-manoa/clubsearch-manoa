@@ -72,11 +72,6 @@ const addClubMethod = 'Clubs.add';
 Meteor.methods({
   'Clubs.add'({ name, image, description, meetingTimes, contact, tags, adminEmail }) {
     Clubs.collection.insert({ name, image, description, meetingTimes, contact, tags, adminEmail });
-    if (tags) {
-      tags.map((tag) => Clubs.collection.insert({ club: name, tag }));
-    } else {
-      throw new Meteor.Error('At least one tag is required.');
-    }
   },
 });
 
