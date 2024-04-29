@@ -6,6 +6,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
+import { Roles } from 'meteor/alanning:roles';
 
 const SignIn = () => {
   const [error, setError] = useState('');
@@ -28,8 +29,11 @@ const SignIn = () => {
   };
 
   if (redirect) {
-    return (<Navigate to="/browseclubs" />);
+    return Roles.userIsInRole(Meteor.userId(), 'clubAdmin') ?
+      (<Navigate to="/editclub" />) :
+      (<Navigate to="/browseclubs" />);
   }
+
   return (
     <Container id={PageIDs.signInPage}>
       <Image src="https://manoa.hawaii.edu/news/attachments/img10896_10743l.jpg" alt="manoa-rainbow pic" className="signin-background" />
