@@ -22,6 +22,12 @@ class ClubsCollection {
         max: 14,
       },
       adminEmail: { type: String, unique: 'true', required: false, min: 1, max: 100 },
+      favorited: { type: Array, unique: 'true', required: false, min: 0, max: 300 },
+      'favorited.$': {
+        type: String,
+        min: 1,
+        max: 100,
+      },
     });
 
     this.collection.attachSchema(this.schema);

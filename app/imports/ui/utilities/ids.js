@@ -83,4 +83,5 @@ export const PageIDs = {
   signInPage: 'signInPage',
   signOutPage: 'signOutPage',
   signUpPage: 'signUpPage',
+  userHomePage: 'userHomePage',
 };
