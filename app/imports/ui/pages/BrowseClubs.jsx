@@ -24,8 +24,9 @@ const BrowseClubs = () => {
   }, []);
   return ready ? (
     <Container id={PageIDs.browseClubs} style={pageStyle}>
+      <h1>Browse Clubs</h1>
       <Row xs={1} md={2} lg={4} className="g-2">
-        {clubs.map((club) => <ClubCard key={club._id} club={club} />)}
+        {clubs.map((club) => <ClubCard key={club._id} club={club}/>)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;
