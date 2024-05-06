@@ -43,6 +43,7 @@ const DeleteClub = () => {
         <Col xs={10}>
           <Col className="text-center"><h2>Delete Club</h2></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+            <h1>Delete Club</h1>
             <Card>
               <Card.Body>
                 <Row>
