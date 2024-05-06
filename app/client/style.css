@@ -92,3 +92,106 @@ background-repeat: no-repeat;
   left: 0;
   z-index: -1;
 }
+
+/* Loading Screen CSS */
+#loader-container {
+  position: relative;
+}
+
+#loader path:nth-child(1) {
+  stroke-dasharray: 200%;
+  stroke-dashoffset: 200%;
+  animation: strokeAnimate 2s 0s ease forwards, fillAnimation 2s 0s;
+}
+
+#loader path:nth-child(2) {
+  stroke-dasharray: 200%;
+  stroke-dashoffset: 200%;
+  animation: strokeAnimate 2s 0s ease forwards, fillAnimation 2s 0s;
+}
+
+#loader path:nth-child(3) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 0.3s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(4) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 0.9s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(5) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.2s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(6) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.5s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(7) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.8s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(8) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 2.1s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(9) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.5s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(10) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.8s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(11) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 2.3s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(12) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.5s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(13) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 1.8s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(14) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 2.1s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(15) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 2.1s ease forwards, fillAnimation 2s 0s;
+}
+#loader path:nth-child(16) {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: strokeAnimate 2s 2.1s ease forwards, fillAnimation 2s 0s;
+}
+
+@keyframes strokeAnimate {
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes fillAnimation{
+  0% { fill: #376551; transform: translate(500px);}
+  25% { fill: red; }
+  50% { fill: yellow; }
+  75% { fill: blue; }
+}
+
+
