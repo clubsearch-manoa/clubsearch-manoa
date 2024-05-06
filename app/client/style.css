@@ -70,17 +70,17 @@ background-repeat: no-repeat;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: papayawhip;
+  background-color: var(--bowfolio-navbar-bg);
   color: black;
-  font-size: 16px;
-  padding: 16px 30px;
+  font-size: 10px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 1px;
   text-align: center;
 }
 .container-btn:hover {
-  background-color: navajowhite;
+  background-color: darkgreen;
   color: gray;
 }
 
