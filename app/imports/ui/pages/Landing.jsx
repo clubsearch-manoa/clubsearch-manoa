@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { PageIDs } from '../utilities/ids';
 
@@ -9,11 +9,9 @@ const Landing = () => (
     <div className="landing-green-background">
       <div className="club-background">
         <Container className="container-btn">
-          <h3 style={{ paddingTop: '10px', color: 'white', fontSize: '40pt' }}>
-            Search Here
-          </h3>
           <div>
-            <Link to="http://localhost:3000/browseClubs" />
+            <Button as={Link} to="/browseClubs" variant="primary">Search Here
+            </Button>
           </div>
         </Container>
       </div>
