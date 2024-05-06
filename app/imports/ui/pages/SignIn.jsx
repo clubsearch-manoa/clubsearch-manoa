@@ -36,15 +36,16 @@ const SignIn = () => {
       <Row className="justify-content-center">
         <Col xs={9}>
           <Col className="text-center mt-5">
-            <h2 style={{ fontSize: '30px', color: 'white' }}> Login To ClubSearch </h2>
+            <h2 style={{ fontSize: '30px', color: 'var(--bowfolio-navbar-bg)' }}> </h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" inputClassName="w-100" />
-                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" inputClassName="w-100" />
-                <ErrorsField />
-                <SubmitField id={ComponentIDs.signInFormSubmit} />
+                <h2 style={{ fontSize: '30px', color: 'var(--bowfolio-navbar-bg)' }}> Login </h2>
+                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" inputClassName="w-100"/>
+                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" inputClassName="w-100"/>
+                <ErrorsField/>
+                <SubmitField id={ComponentIDs.signInFormSubmit}/>
               </Card.Body>
             </Card>
           </AutoForm>
