@@ -10,7 +10,13 @@ const Landing = () => (
       <div className="club-background">
         <Container className="container-btn">
           <div>
-            <Button as={Link} to="/browseClubs" variant="primary">Search Here
+            <Button
+              as={Link}
+              to="/browseClubs"
+              variant="primary"
+              style={{ backgroundColor: 'var(--bowfolio-navbar-bg)', color: 'white', fontSize: '18px', padding: '10px 20px' }}
+              size="lg"
+            >Search Here
             </Button>
           </div>
         </Container>
