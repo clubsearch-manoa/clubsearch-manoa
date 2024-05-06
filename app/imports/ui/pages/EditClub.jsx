@@ -48,28 +48,29 @@ const EditClub = () => {
   const transform = (label) => ` ${label}`;
   return ready ? (
     <Container id={PageIDs.editClubPage} className="justify-content-center" style={pageStyle}>
+      <h1>Edit Club</h1>
       <Col>
-        <Col className="justify-content-center text-center"><h2>Edit Club</h2></Col>
+        <Col className="justify-content-center text-center" />
         <AutoForm ref={ref => { fRef = ref; }} model={model} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <Card>
             <Card.Body>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.editClubFormName} name="name" showInlineError placeholder="Club Name" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormName} name="name" showInlineError placeholder="Club Name"/></Col>
               </Row>
               <Row>
-                <Col xs={6}><TextField id={ComponentIDs.editClubFormImage} name="image" showInlineError placeholder="URL to picture" /></Col>
+                <Col xs={6}><TextField id={ComponentIDs.editClubFormImage} name="image" showInlineError placeholder="URL to picture"/></Col>
               </Row>
-              <LongTextField id={ComponentIDs.editClubFormDescription} name="description" placeholder="Write a little bit about your club." />
+              <LongTextField id={ComponentIDs.editClubFormDescription} name="description" placeholder="Write a little bit about your club."/>
               <Row>
-                <Col xs={4}><TextField id={ComponentIDs.editClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
-              </Row>
-              <Row>
-                <Col xs={4}><TextField id={ComponentIDs.editClubFormContact} name="contact" showInlineError placeholder="Contact" /></Col>
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Meeting Times"/></Col>
               </Row>
               <Row>
-                <SelectField name="tags" multiple checkboxes transform={transform} />
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormContact} name="contact" showInlineError placeholder="Contact"/></Col>
               </Row>
-              <SubmitField id={ComponentIDs.editClubFormSubmit} value="Update" />
+              <Row>
+                <SelectField name="tags" multiple checkboxes transform={transform}/>
+              </Row>
+              <SubmitField id={ComponentIDs.editClubFormSubmit} value="Update"/>
             </Card.Body>
           </Card>
         </AutoForm>

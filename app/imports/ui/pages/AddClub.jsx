@@ -40,35 +40,36 @@ const AddClub = () => {
   /* Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   return ready ? (
     <Container style={pageStyle}>
+      <h1>Add Club</h1>
       <Row id={PageIDs.addClubPage} className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Add Club</h2></Col>
+          <Col className="text-center" />
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
                 <Row>
-                  <Col xs={6}><TextField id={ComponentIDs.addClubFormName} name="name" showInlineError placeholder="Club Name" /></Col>
-                  <Col xs={6}><TextField id={ComponentIDs.addClubFormImage} name="image" showInlineError placeholder="Upload a Club Logo/Photo" /></Col>
+                  <Col xs={6}><TextField id={ComponentIDs.addClubFormName} name="name" showInlineError placeholder="Club Name"/></Col>
+                  <Col xs={6}><TextField id={ComponentIDs.addClubFormImage} name="image" showInlineError placeholder="Upload a Club Logo/Photo"/></Col>
                 </Row>
-                <LongTextField id={ComponentIDs.addClubFormDescription} name="description" placeholder="Describe the club here!" />
+                <LongTextField id={ComponentIDs.addClubFormDescription} name="description" placeholder="Describe the club here!"/>
                 <Row className="p-1">
                   <Col xs={6} id={ComponentIDs.addClubFormTags}>
-                    <SelectField name="tags" showInlineError placeholder="Tags" multiple checkboxes transform={transform} />
+                    <SelectField name="tags" showInlineError placeholder="Tags" multiple checkboxes transform={transform}/>
                   </Col>
                   <Col xs={6}>
-                    <Col xs={10}><TextField id={ComponentIDs.addClubFormContact} name="contact" showInlineError placeholder="Provide a way to contact!" /></Col>
+                    <Col xs={10}><TextField id={ComponentIDs.addClubFormContact} name="contact" showInlineError placeholder="Provide a way to contact!"/></Col>
                   </Col>
                   <Col xs={6}>
-                    <TextField id={ComponentIDs.addClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Provide club meeting times!" />
+                    <TextField id={ComponentIDs.addClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Provide club meeting times!"/>
                   </Col>
                   <Col xs={6}>
                     <Col xs={10}>
-                      <TextField id={ComponentIDs.addClubFormEmail} name="adminEmail" showInlineError placeholder="Add a Club Admin's email..." />
+                      <TextField id={ComponentIDs.addClubFormEmail} name="adminEmail" showInlineError placeholder="Add a Club Admin's email..."/>
                     </Col>
                   </Col>
                 </Row>
-                <SubmitField id={ComponentIDs.addClubFormSubmit} value="Submit" />
-                <ErrorsField />
+                <SubmitField id={ComponentIDs.addClubFormSubmit} value="Submit"/>
+                <ErrorsField/>
               </Card.Body>
             </Card>
           </AutoForm>
