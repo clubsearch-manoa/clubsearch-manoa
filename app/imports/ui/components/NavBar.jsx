@@ -19,7 +19,7 @@ const NavBar = () => {
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="align-items-center">
-          <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/cropped-Manoa-Logo-300x300.png" width={50} style={{ marginBottom: 3 }} /> Club Search</span>
+          <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="https://www.hawaiidxp.org/wp-content/uploads/2021/10/uh-300x300.png" width={50} style={{ marginBottom: 3 }} /> Club Search</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
