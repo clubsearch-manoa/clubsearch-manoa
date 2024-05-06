@@ -17,7 +17,7 @@ const Landing = () => (
               backgroundColor: 'var(--bowfolio-navbar-bg)',
               color: 'white',
               fontSize: '24px',
-              padding: '15px 30px',
+              padding: '20px 40px',
               fontFamily: 'Impact',
               textShadow: '2px 2px 0px black',
             }}

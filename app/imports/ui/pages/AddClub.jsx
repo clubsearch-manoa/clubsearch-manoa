@@ -40,11 +40,11 @@ const AddClub = () => {
   /* Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   return ready ? (
     <Container style={pageStyle}>
-      <h1>Add Club</h1>
       <Row id={PageIDs.addClubPage} className="justify-content-center">
         <Col xs={10}>
           <Col className="text-center" />
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+            <h1>Add Club</h1>
             <Card>
               <Card.Body>
                 <Row>
