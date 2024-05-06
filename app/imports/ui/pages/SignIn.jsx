@@ -42,10 +42,10 @@ const SignIn = () => {
             <Card>
               <Card.Body>
                 <h2 style={{ fontSize: '30px', color: 'var(--bowfolio-navbar-bg)' }}> Login </h2>
-                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" inputClassName="w-100"/>
-                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" inputClassName="w-100"/>
-                <ErrorsField/>
-                <SubmitField id={ComponentIDs.signInFormSubmit}/>
+                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" inputClassName="w-100" />
+                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" inputClassName="w-100" />
+                <ErrorsField />
+                <SubmitField id={ComponentIDs.signInFormSubmit} />
               </Card.Body>
             </Card>
           </AutoForm>
