@@ -8,18 +8,24 @@ const Landing = () => (
   <div id={PageIDs.landingPage}>
     <div className="landing-green-background">
       <div className="club-background">
-        <Container className="container-btn">
-          <div>
-            <Button
-              as={Link}
-              to="/browseClubs"
-              variant="primary"
-              style={{ backgroundColor: 'var(--bowfolio-navbar-bg)', color: 'white', fontSize: '18px', padding: '10px 20px' }}
-              size="lg"
-            >Search Here
-            </Button>
-          </div>
-        </Container>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <Button
+            as={Link}
+            to="/browseClubs"
+            variant="primary"
+            style={{
+              backgroundColor: 'var(--bowfolio-navbar-bg)',
+              color: 'white',
+              fontSize: '24px',
+              padding: '15px 30px',
+              fontFamily: 'Impact',
+              textShadow: '2px 2px 0px black',
+            }}
+            size="lg"
+          >
+            Search Here
+          </Button>
+        </div>
       </div>
     </div>
   </div>
