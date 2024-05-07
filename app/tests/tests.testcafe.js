@@ -3,6 +3,8 @@ import { signInPage } from './signin.page';
 import { signOutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
+import { homePage } from './home.page';
+import { addClubPage } from './addclub.page';
 import { deleteClubPage } from './deleteclub.page';
 import { editClubPage } from './editclub.page';
 import { browseClubsPage } from './browseclubs.page';
