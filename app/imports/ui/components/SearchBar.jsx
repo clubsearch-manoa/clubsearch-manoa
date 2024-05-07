@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'react-bootstrap-icons';
 import _ from 'underscore';
 import { Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { Clubs } from '../../api/clubs/Clubs';
 
 const SearchBar = ({ setResults }) => {
@@ -35,6 +36,11 @@ const SearchBar = ({ setResults }) => {
       />
     </Container>
   );
+};
+
+// Define propTypes
+SearchBar.propTypes = {
+  setResults: PropTypes.func.isRequired, // setResults prop should be a function and is required
 };
 
 export default SearchBar;

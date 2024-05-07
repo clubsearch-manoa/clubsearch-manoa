@@ -26,7 +26,7 @@ const BrowseClubs = () => {
     };
   }, []);
   return ready ? (
-    <Container id={PageIDs.browseClubs} style={pageStyle} className="p-1">
+    <Container id={PageIDs.browseClubsPage} style={pageStyle} className="p-1">
       <SearchBar setResults={setResults} />
       <SearchResultsList results={results} />
       {results.length === 0 && (
