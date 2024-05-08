@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { check } from 'meteor/check';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
@@ -91,6 +93,20 @@ const editClubMethod = 'Clubs.edit';
 Meteor.methods({
   'Clubs.edit'({ name, image, description, meetingTimes, contact, tags }) {
     Clubs.collection.update({ name }, { $set: { name, image, description, meetingTimes, contact, tags } });
+  },
+});
+
+Meteor.methods({
+  'promoteUser'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, role);
+  },
+  'demoteUser'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    Roles.removeUsersFromRoles(userID, role);
   },
 });
 
