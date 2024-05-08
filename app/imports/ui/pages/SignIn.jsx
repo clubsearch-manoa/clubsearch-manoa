@@ -5,8 +5,8 @@ import { Alert, Card, Col, Container, Row, Image } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Roles } from 'meteor/alanning:roles';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const SignIn = () => {
   const [error, setError] = useState('');
