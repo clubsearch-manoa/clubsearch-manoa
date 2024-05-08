@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Card, Image, Col } from 'react-bootstrap';
+import { Badge, Card, Image, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 /* Returns the Club with the passed user name. Implement as needed. */
@@ -29,6 +29,7 @@ const ClubCard = ({ club }) => (
         <Card.Text>
           <b>Contact Info:</b> {club.contact}
         </Card.Text>
+        <Button as="input" type="button" value="Favorite" variant="primary" />{' '}
       </Card.Body>
     </Card>
   </Col>
@@ -42,6 +43,7 @@ ClubCard.propTypes = {
     meetingTimes: PropTypes.string,
     contact: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
+    favorited: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 

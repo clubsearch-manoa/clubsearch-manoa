@@ -27,7 +27,7 @@ const UserHome = () => {
     };
   }, []);
 
-  const emails = _.pluck(Clubs.collection.find().fetch(), 'favorites');
+  const emails = _.pluck(Clubs.collection.find().fetch(), 'favorited');
   const favoriteData = emails.map(email => getUserData(email));
   const favorites = _.sample(favoriteData);
 

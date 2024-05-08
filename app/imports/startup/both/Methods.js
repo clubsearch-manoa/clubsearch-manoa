@@ -94,4 +94,12 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod };
+const favoriteClubMethod = 'Clubs.favorite';
+
+Meteor.methods({
+  'Clubs.favorite'({ favorited }) {
+    Clubs.collection.update({ favorited }, { $set: { favorited } });
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod, favoriteClubMethod };

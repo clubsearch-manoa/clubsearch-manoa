@@ -64,6 +64,8 @@ export const ComponentIDs = {
   signUpFormEmail: 'signUpFormEmail',
   signUpFormPassword: 'signUpFormPassword',
   signUpFormSubmit: 'signUpFormSubmit',
+  // User Homepage
+  userHomePageMenuItem: 'userHomePageMenuItem',
 };
 
 export const PageIDs = {

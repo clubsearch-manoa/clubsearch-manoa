@@ -19,6 +19,7 @@ import AddClub from '../pages/AddClub';
 import BrowseClubs from '../pages/BrowseClubs';
 import DeleteClub from '../pages/DeleteClub';
 import EditClub from '../pages/EditClub';
+import UserHome from '../pages/UserHome';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -39,6 +40,7 @@ const App = () => (
         <Route path="/projects" element={<Projects />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
+        <Route path="/userhomepage" element={<UserHome />} />
         <Route path="/addproject" element={<ProtectedRoute><AddClub /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
