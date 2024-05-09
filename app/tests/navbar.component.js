@@ -66,7 +66,6 @@ class NavBar {
   //   await testController.click(`#${ComponentIDs.filterMenuItem}`);
   // }
 
-
   async gotoAddClubPage(testController) {
     const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
     if (!visible) {
@@ -105,7 +104,7 @@ class NavBar {
     await testController.click(`#${ComponentIDs.loginDropdown}`);
     await testController.click(`#${ComponentIDs.loginDropdownSignUp}`);
   }
-  
+
   async gotoDeleteClubPage(testController) {
     const visible = await Selector(`#${ComponentIDs.basicNavbarNav}`).visible;
     if (!visible) {

@@ -36,7 +36,6 @@ const EditClub = () => {
     const email = Meteor.user()?.username;
     const dataModel = _.extend({}, Clubs.collection.findOne({ adminEmail: email }));
     const rdy = subscription.ready();
-    console.log(rdy);
     return {
       ready: rdy,
       model: dataModel,

@@ -6,6 +6,8 @@ import { navBar } from './navbar.component';
 import { deleteClubPage } from './deleteclub.page';
 import { editClubPage } from './editclub.page';
 import { browseClubsPage } from './browseclubs.page';
+import { homePage } from './home.page';
+import { addClubPage } from './addclub.page';
 
 /* global fixture:false, test:false */
 
