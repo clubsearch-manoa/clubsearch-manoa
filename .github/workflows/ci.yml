@@ -3,7 +3,7 @@ name: ci-clubsearch-manoa
 on:
   push:
     branches:
-      - test-m2
+      - test-m2-addclubtestcade
 
 defaults:
   run:
