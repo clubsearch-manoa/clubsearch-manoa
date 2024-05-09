@@ -45,6 +45,10 @@ Meteor.publish(Clubs.adminPublications, function () {
   return this.ready();
 });
 
+Meteor.publish('allUsers', function () {
+  return Meteor.users.find({}, { fields: { username: 1, emails: 1 } });
+});
+
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

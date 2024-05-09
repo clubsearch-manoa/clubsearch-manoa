@@ -10,7 +10,7 @@ Meteor.startup(() => {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating default logins for each role');
     Meteor.settings.defaultAccounts.forEach(({ email, password, role }) => {
-      const userID = Accounts.createUser({ username: email, email, password: password, role: role });
+      const userID = Accounts.createUser({ username: email, email, password: password });
       if (role === 'admin' || role === 'clubAdmin') {
         Roles.createRole(role, { unlessExists: true });
         Roles.addUsersToRoles(userID, role);

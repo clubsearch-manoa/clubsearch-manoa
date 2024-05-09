@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+import { check } from 'meteor/check';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
@@ -94,4 +96,37 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod };
+const favoriteClubMethod = 'Clubs.favorite';
+
+Meteor.methods({
+  'Clubs.favorite'({ favorited }) {
+    Clubs.collection.update({ favorited }, { $set: { favorited } });
+  },
+});
+
+const promoteUser = 'promoteUser';
+const demoteUser = 'demoteUser';
+const isUserInRole = 'isUserInRole';
+
+Meteor.methods({
+  'promoteUser'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, role);
+    // console.log(Roles.userIsInRole(userID, role) ? 'user promoted' : 'promotion failed');
+  },
+  'demoteUser'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    Roles.removeUsersFromRoles(userID, role);
+    // console.log(!Roles.userIsInRole(userID, role) ? 'user demoted' : 'demotion failed');
+  },
+  'isUserInRole'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    return Roles.userIsInRole(userID, role);
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod, favoriteClubMethod, promoteUser, demoteUser, isUserInRole };

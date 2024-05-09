@@ -150,7 +150,8 @@
       "description": "A club for those who dedicate themselves to the pursuit of greater martial prowess.",
       "meetingTimes": "Tuesdays: 2 PM - 3:30 PM",
       "contact": "kumit3Luvr@gmail.com",
-      "tags": ["Martial Arts"]
+      "tags": ["Martial Arts"],
+      "favorited" : ["johndoe@foo.com"]
     },
     {
       "name": "Culinary Warriors",

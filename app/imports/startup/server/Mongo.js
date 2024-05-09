@@ -14,14 +14,9 @@ import { Clubs } from '../../api/clubs/Clubs';
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
 export function createUser(email, password, role) {
   const userID = Accounts.createUser({ username: email, email, password: password, role: role });
-  if (role === 'admin') {
+  if (role === 'admin' || role === 'clubAdmin') {
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'admin');
-  }
-
-  if (role === 'clubAdmin') {
-    Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'clubAdmin');
+    Roles.addUsersToRoles(userID, role);
   }
 }
 
