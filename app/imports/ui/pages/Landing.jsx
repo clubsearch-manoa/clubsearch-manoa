@@ -8,7 +8,7 @@ const Landing = () => (
   <div id={PageIDs.landingPage}>
     <div className="landing-green-background">
       <div className="club-background">
-        <h1 style={{ textAlign: 'center', color: 'white', paddingTop: '20vh', fontFamily: 'Impact', fontSize: '3em', textShadow: '2px 2px 0px black' }}>Club Search Manoa</h1>
+        <h1 style={{ textAlign: 'center', color: 'white', paddingTop: '20vh', fontFamily: 'Impact', fontSize: '3em', textShadow: '5px 5px 0px black' }}>Club Search Manoa</h1>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           <Button
             as={Link}
