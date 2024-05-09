@@ -119,14 +119,6 @@ button:focus {
 
 }
 
-input {
-  background-color: transparent;
-  border: none;
-  height: 100%;
-  width: 100%;
-  color: black;
-}
-
 input:focus {
   outline: none;
 }
