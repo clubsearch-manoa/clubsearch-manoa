@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'react-bootstrap-icons';
 import _ from 'underscore';
 import { Container } from 'react-bootstrap';
@@ -12,7 +12,11 @@ const UserSearchBar = ({ setResults }) => {
     try {
       const users = Meteor.users.find().fetch();
 
-      const results = _.filter(users, (user) => user.username && user.username.toLowerCase().includes(value.toLowerCase()));
+      let results = [];
+      // if search is empty, display all users
+      if (value === '') results = users;
+      // otherwise display relevant users
+      else results = _.filter(users, (user) => user.username && user.username.toLowerCase().includes(value.toLowerCase()));
 
       setResults(results);
 
@@ -20,6 +24,11 @@ const UserSearchBar = ({ setResults }) => {
       console.error('Error fetching data: ', error);
     }
   };
+
+  // Make an empty search call on page load to display all users
+  useEffect(() => {
+    fetchData(''); // Call fetchData with an empty value when component mounts
+  }, []); // Empty dependency array ensures the effect runs only once after the initial render
 
   const handleChange = (value) => {
     setInput(value);

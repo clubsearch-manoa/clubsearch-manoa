@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -7,13 +8,15 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { Interests } from '../../api/interests/Interests';
 import { Clubs } from '../../api/clubs/Clubs';
-
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
 export function createUser(email, password, role) {
   const userID = Accounts.createUser({ username: email, email, password: password, role: role });
-  if (role === 'admin' || role === 'clubAdmin') Meteor.call('promoteUser', userID, role);
+  if (role === 'admin' || role === 'clubAdmin') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, role);
+  }
 }
 
 /** Define an interest.  Has no effect if interest already exists. */

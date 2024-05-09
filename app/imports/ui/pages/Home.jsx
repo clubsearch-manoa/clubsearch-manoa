@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 // import swal from 'sweetalert';
@@ -42,9 +42,23 @@ const Home = () => {
         </Row>
       </Container>
     ) : (
-      <Container id={PageIDs.homePage} style={pageStyle} className="p-1">
-        <UserSearchBar setResults={setResults} />
-        <UserList results={results} />
+      <Container id={PageIDs.homePage} className="p-1">
+        <Col>
+          <h2>Promote and Demote Users</h2>
+          <Card>
+            <Card.Header>
+              <Container>
+                <UserSearchBar setResults={setResults} />
+              </Container>
+            </Card.Header>
+            <Card.Body>
+              <Container>
+                {/* Render your UserList component inside the Card */}
+                <UserList results={results} />
+              </Container>
+            </Card.Body>
+          </Card>
+        </Col>
       </Container>
     )
   );

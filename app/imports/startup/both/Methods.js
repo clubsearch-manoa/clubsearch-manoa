@@ -96,18 +96,29 @@ Meteor.methods({
   },
 });
 
+const promoteUser = 'promoteUser';
+const demoteUser = 'demoteUser';
+const isUserInRole = 'isUserInRole';
+
 Meteor.methods({
   'promoteUser'(userID, role) {
     check(userID, String);
     check(role, String);
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, role);
+    // console.log(Roles.userIsInRole(userID, role) ? 'user promoted' : 'promotion failed');
   },
   'demoteUser'(userID, role) {
     check(userID, String);
     check(role, String);
     Roles.removeUsersFromRoles(userID, role);
+    // console.log(!Roles.userIsInRole(userID, role) ? 'user demoted' : 'demotion failed');
+  },
+  'isUserInRole'(userID, role) {
+    check(userID, String);
+    check(role, String);
+    return Roles.userIsInRole(userID, role);
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod };
+export { updateProfileMethod, addProjectMethod, addClubMethod, deleteClubMethod, editClubMethod, promoteUser, demoteUser, isUserInRole };
