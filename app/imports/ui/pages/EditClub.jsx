@@ -60,11 +60,11 @@ const EditClub = () => {
               </Row>
               <LongTextField id={ComponentIDs.editClubFormDescription} name="description" placeholder="Write a little bit about your club." />
               <Row>
+                <Col xs={4}><SelectField name="tags" multiple checkboxes transform={transform} /></Col>
                 <Col xs={4}><TextField id={ComponentIDs.editClubFormContact} name="contact" showInlineError placeholder="Contact" /></Col>
-                <Col xs={4}><TextField id={ComponentIDs.editClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
               </Row>
               <Row>
-                <SelectField name="tags" multiple checkboxes transform={transform} />
+                <Col xs={4}><TextField id={ComponentIDs.editClubFormMeetingTimes} name="meetingTimes" showInlineError placeholder="Meeting Times" /></Col>
               </Row>
               <SubmitField id={ComponentIDs.editClubFormSubmit} value="Update" />
             </Card.Body>
